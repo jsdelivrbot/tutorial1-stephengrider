@@ -7,7 +7,10 @@ class BookList extends Component {
   renderList() {
     return this.props.books.map((book) => {
       return (
-        <li key={book.title} className="list-group-item">{book.title}</li>
+        <li
+          key={book.title}
+          onClick={() => this.props.selectBook(book)}
+          className="list-group-item">{book.title}</li>
       )
     })
   }
@@ -34,4 +37,5 @@ function mapStateToProps(state) {
   }
 }
 
+//promote BookList from a component to a container. It needs to know about this nee dispatch method, selectBook and make it available to BookList as a props.
 export default connect (mapStateToProps, mapDispatchToProps)(BookList)
